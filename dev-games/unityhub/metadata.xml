@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>gabibust@gmail.com</email>
+    <name>Gabriel Bustillo del Cuvillo</name>
+  </maintainer>
+  <longdescription lang="en">
+    UnityHub is a Unity Version Control/Downloader.
+  </longdescription>
+</pkgmetadata>
