@@ -1,4 +1,5 @@
 # Copyright 2020-2021 Gentoo Authors
+# Copyright 2023 Gabriel Bustillo del Cuvillo
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +13,7 @@ EGIT_REPO_URI="https://gitlab.freedesktop.org/monado/monado.git"
 LICENSE="Boost-1.0"
 SLOT="0"
 
-IUSE="dbus ffmpeg gles gstreamer opencv opengl psvr sdl systemd uvc vive vulkan wayland X"
+IUSE="dbus ffmpeg gles gstreamer opencv opengl slam rifts wmr psvr sdl systemd uvc vive vulkan wayland X"
 
 # TODO: OpenHMD, percetto?, libsurvive?
 BDEPEND=""
@@ -40,7 +41,7 @@ DEPEND="
 		media-libs/vulkan-loader
 		dev-util/vulkan-headers
 	)
-	slam? ( media-libs/basalt ) ## other one
+	slam? ( media-libs/monado-basalt )
 	opengl? ( virtual/opengl )
 	opencv? ( media-libs/opencv:= )
 	gles? ( media-libs/mesa[gles1,gles2] )
@@ -89,8 +90,22 @@ src_configure() {
 		-DXRT_BUILD_DRIVER_ARDUINO=$(usex dbus)
 		-DXRT_BUILD_DRIVER_ILLIXR=OFF
 		-DXRT_BUILD_DRIVER_ULV2=OFF
+		-DXRT_BUILD_DRIVER_WMR=$(usex wmr)
+		-DXRT_BUILD_DRIVER_RIFT_S=$(usex rifts)
+		-DXRT_BUILD_DRIVER_ANDROID=OFF
+		
+		-DXRT_BUILD_DRIVER_EUROC=OFF
+		-DXRT_BUILD_DRIVER_TWRAP=OFF
+		-DXRT_BUILD_DRIVER_HDK=OFF
+		-DXRT_BUILD_DRIVER_NS=OFF
+		-DXRT_BUILD_DRIVER_REALSENSE=OFF
+		-DXRT_BUILD_DRIVER_REMOTE=OFF
+		-DXRT_BUILD_DRIVER_SIMULATED=YES
 
+		-DXRT_BUILD_DRIVER_HYDRA=OFF
+		-DXRT_BUILD_DRIVER_DEPTHAI=OFF
 		-DXRT_BUILD_DRIVER_VF=OFF
+		-DXRT_BUILD_DRIVER_PSMV=OFF
 		-DXRT_BUILD_DRIVER_SIMULAVR=OFF
 		-DXRT_BUILD_DRIVER_OPENGLOVES=OFF
 		-DXRT_BUILD_DRIVER_SURVIVE=OFF

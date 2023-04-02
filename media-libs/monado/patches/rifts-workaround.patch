@@ -1,0 +1,13 @@
+diff --git a/src/xrt/targets/common/target_builder_legacy.c b/src/xrt/targets/co
+index d00c9341..012f4309 100644
+--- a/src/xrt/targets/common/target_builder_legacy.c
++++ b/src/xrt/targets/common/target_builder_legacy.c
+@@ -83,6 +83,10 @@ static const char *driver_list[] = {
+ #if defined(XRT_BUILD_DRIVER_SIMULATED)
+     "simulated",
+ #endif
++
++#if defined(XRT_BUILD_DRIVER_RIFT_S)
++    "rift_s",
++#endif
+ };
